@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/58abd3986a.js" crossorigin="anonymous"></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      box-sizing: border-box;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+    body {
+      background: #080808;
+      color: white;
+    }
+    #header {
+      width: 100%;
+      height: 100vh;
+      background-image: url(me.jpeg);
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      padding: 10px 10%;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      width: 70px;
+      height: 70px;
+    }
+    nav ul li {
+      display: inline-block;
+      list-style: none;
+      margin: 10px 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: "";
+      width: 0;
+      height: 3px;
+      background: #ff004f;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      transition: 0.5s;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    .header-text {
+      margin-top: 20%;
+      font-size: 30px;
+    }
+    .header-text h1 {
+      font-size: 60px;
+      margin-top: 20px;
+    }
+    .header-text h1 span {
+      color: #dc6d6d;
+    }
+
+    /* about ka css */
+
+    #about {
+      padding: 80px 0;
+      color: #ababab;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .col1 {
+      flex-basis: 35%;
+    }
+    .col1 img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .col2 {
+      flex-basis: 60%;
+    }
+    .subtitle {
+      font-size: 60px;
+      font-weight: 600;
+      color: white;
+    }
+    .tab-titles{
+        display: flex;
+        margin: 20px 0 40px;
+    }
+    .links{
+        margin-right: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+    }
+    .links::after{
+        content: '';
+        width: 0;
+        height:3px ;
+        background: #ff004f;
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        transition: 0.5s;
+    }
+    .links.active-link::after{
+        width: 50%;
+    }
+    .tab-contents ul li{
+        list-style: none;
+        margin: 10px 0;
+
+    }
+    .tab-contents ul li span{
+        color: #b54769;
+        font-size: 14px;
+    }
+    .tab-contents{
+        display: none;
+    }
+    .tab-contents.active-tab{
+        display: block;
+    }
+
+    /* services */
+
+    #services{
+        margin-top: 50px;
+    }
+    .gray{
+      font-size: 20px;
+    }
+
+    .second {
+        max-width: 80vw;
+        margin: 13px 0;
+        height: 80vh;
+      }
+      .second .box {
+        background-color: white;
+        width: 82vw;
+        height: 2px;
+        margin: 56px 0;
+        display: flex;
+      }
+      .second .vertical {
+        height: 93px;
+        width: 1px;
+        background-color: white;
+        margin: 0 120px;
+      }
+      .image-top {
+        width: 23px;
+        position: relative;
+        top: -32px;
+        left: -9px;
+      }
+      .image-top:hover{
+        transform: scale(1.5);
+      }
+      .title {
+        position: relative;
+        top: 75px;
+        width: 15px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      .title:hover{
+        transform: scale(1.5);
+      }
+      .desc {
+        position: relative;
+        top: 86px;
+        color: whitesmoke;
+        width: 150px;
+        font-size: 10px;
+        background-color: #180f0f;
+        padding: 10px;
+        border-radius: 10px;
+        transition: background 0.5s, transform 0.5s;
+      }
+      .desc:hover{
+        background-color: #ff004f;
+        color: white;
+        transform: translateY(-10px);
+      }
+      /* portfolio */
+      #portfolio
+      {
+padding: 10px 0;
+      }
+      .work-list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 40px;
+        margin-top: 50px;
+      }
+      .work{
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .work img{
+        width: 100%;
+        height: 50vh;
+        border-radius: 10px;
+        display: block;
+        transition: transform 0.5s;
+      }
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.layer a{
+    margin-top: 20px;
+    color: #ff004f;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+}
+.work:hover img{
+transform: scale(1.1);
+}
+.work:hover .layer{
+    height: 100%;
+}
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #ff004f;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    transition: background 0.5s ;
+}
+.btn:hover{
+    background: #ff004f;
+}
+
+      /* contact */
+      .contact-left
+      {
+        flex-basis: 35%;
+
+      }
+      .contact-right
+      {
+        flex-basis: 60%;
+        
+      }
+      .contact-left p{
+        margin-top: 30px;
+      }
+      .contact-left p i{
+        color: #ff004f;
+        margin-right: 15px;
+        font-size: 25px;
+      }
+      .social-icons{
+        margin-top: 30px;
+      }
+      .social-icons a{
+        text-decoration: none;
+        font-size: 30px;
+        margin-right: 15px;
+        color: #ababab;
+        display: inline-block;
+        transition: transform 0.5s;
+      }
+      .social-icons a:hover{
+        color: #ff004f;
+        transform: translateY(-5px);
+      }
+      .btn.btn2{
+        display: inline-block;
+        background: #ff004f;
+      }
+      .contact-right form{
+        width: 100%;
+      }
+      form input, form textarea{
+        width: 100%;
+        border: 0;
+        outline: none;
+        background: #262626;
+        padding: 15px;
+        margin: 15px 0;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 6px;
+      }
+      form .btn2{
+        padding: 14px 60px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .copyright{
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background: #262626;
+        font-weight: 300;
+        margin-top: 20px;
+      }
+      .copyright i{
+        color: red;
+      }
+
+      /* css for small screens */
+      nav .fa-solid{
+        display: none;
+      }
+
+      @media only screen and (max-width: 900px)
+      {
+        #header{
+            background-image: url(new1.jpeg);
+        }
+        .header-text{
+            margin-top: 50%;
+            font-size: 16px;
+        }
+        .header-text h1{
+            font-size: 30px;
+        }
+        nav .fa-solid{
+        display: block;
+        font-size: 25px;
+      }
+      nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+      }
+      nav ul li{
+        display: block;
+        margin: 25px;
+      }
+      nav ul .fa-solid{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+      }
+      .subtitle{
+        font-size: 40px;
+      }
+      .col1,.col2{
+        flex-basis: 100%;
+      }
+      .col1{
+        margin-bottom: 30px;
+      }
+      .col2{
+        font-size: 14px;
+      }
+      .links{
+        font-size: 16px;
+        margin-right:20px ;
+      }
+
+
+.second{
+    height: 180vh;
+}
+      .second .box{
+        background-color: white;
+        width: 20px;
+        height: 0px;
+        margin: 56px 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 108px;
+      }
+      .second .vertical {
+        height: 93px;
+        width: 0px;
+        background-color: white;
+        margin: 0 120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .image-top {
+        width: 23px;
+        position: relative;
+        top: -32px;
+        left: -101px;
+      }
+      .title {
+        position: relative;
+        top: -33px;
+        left: -84px;
+        width: 15px;
+        font-size: 14px;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+      }
+      .desc {
+        position: relative;
+        top: 65px;
+        left: -104px;
+        color: gray;
+        width: 270px;
+        font-size: 9px;
+        height: 172px;
+        display: flex;
+        white-space: nowrap;
+        box-sizing: border-box;
+        /* display: none; */
+    }
+      .desc h4{
+        margin: 6px 0;
+        position: relative;
+        top: 13px;
+        font-size: 12px;
+        white-space: initial;
+        width: 350px;
+      }
+
+      .contact-left , .contact-right{
+        flex-basis: 100%;
+      }
+      .copyright{
+        font-size: 14px;
+      }
+      }
+
+      @media only screen and (min-width: 901px) and (max-width: 1000px)
+      {
+        .second .box{
+          width: 131vw;
+        }
+      }
+  </style>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img class="logo" src="logo.png" alt="" />
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <!-- <li><a href="/">Academics</a></li> -->
+            <li><a href="#services">Experience</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+          <h1>
+            Hi, I'm <span>Tannya Singh</span> <br/>
+            <div>and I am a passionate</div>
+          <span id="element"></span>
+          <div class="buttons">
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- about -->
+
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col1">
+            <img src="meee.jpeg" />
+          </div>
+          <div class="col2">
+            <h1 class="subtitle">About Me</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis fuga a nesciunt doloribus. Amet illo officiis perspiciatis quos, voluptas quae iure reiciendis distinctio impedit ducimus! Necessitatibus eligendi saepe autem repellat.</p>
+
+            <div class="tab-titles">
+                <p class="links active-link" onclick="opentab('skills')">Skills</p>
+                <p class="links" onclick="opentab('experience')">Experience</p>
+                <p class="links" onclick="opentab('education')">Education</p>
+            </div>
+
+            <div class="tab-contents active-tab" id="skills">
+                <ul>
+                    <li><span>Web Developer</span> <br> Website development</li>
+                    <li><span>CP and DSA</span> <br> Problem Solving</li>
+                    <li><span>WEB3.0</span> <br>Decentralized Applications(DApps)</li>
+                </ul>
+            </div>
+            
+          <div class="tab-contents" id="experience">
+            <ul>
+                <li><span>January,2024</span> <br>AI Project in Kriti'24</li>
+                <li><span>March,2024</span> <br>Web development module in SPIRIT'24</li>
+                <li><span>April,2024</span> <br>Web development and Content module in Sail</li>
+                <li><span>May,2024</span> <br>Web development module in LIT-SOC</li>
+                <li><span>June,2024</span> <br>Web development module in TEDxIITGuwahati</li>
+            </ul>
+        </div>
+        <div class="tab-contents" id="education">
+            <ul>
+                <li><span>2022</span> <br>Lucknow Public College</li>
+                <li><span>2022 - 2023</span> <br>IIIT Lucknow, BTech in Computer Science</li>
+                <li><span>2024 - Current</span> <br>IIT Guwahati, BTech in Chemical Enineering</li>
+            </ul>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+<!-- services -->
+
+<div id="services">
+    <div class="container">
+        <section class="second">
+            <span class="gray"> What I have done so far</span>
+            <h1 class="subtitle">Work Experience</h1>
+    
+            <div class="box">
+              <div class="vertical">
+                <img class="image-top" src="kriti.png" alt="" />
+                <div class="title">
+                  AI project
+                  <div> in KRITI'24</div>
+                </div>
+                <div class="desc">
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+                        perspiciatis aspernatur optio rem nobis consectetur commodi
+                        tempore doloribus veritatis quisquam.</h4>
+                </div>
+              </div>
+
+              <div class="vertical">
+                <img class="image-top" src="spirit.png" alt="" />
+                <div class="title">
+                  Web Developer
+                  <div> in SPIRIT</div>
+                </div>
+                <div class="desc">
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+                        perspiciatis aspernatur optio rem nobis consectetur commodi
+                        tempore doloribus veritatis quisquam.</h4>
+                </div>
+              </div>
+    
+              <div class="vertical">
+                <img class="image-top" src="sail.png" alt="" />
+                <div class="title">
+                  Web Developer
+                  <div> in SAIL</div>
+                </div>
+                <div class="desc">
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+                        perspiciatis aspernatur optio rem nobis consectetur commodi
+                        tempore doloribus veritatis quisquam.</h4>
+                </div>
+              </div>
+    
+              <div class="vertical">
+                <img class="image-top" src="lit-soc.png" alt="" />
+                <div class="title">
+                  Web Developer
+                  <div> in LIT-SOC</div>
+                </div>
+                <div class="desc">
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+                        perspiciatis aspernatur optio rem nobis consectetur commodi
+                        tempore doloribus veritatis quisquam.</h4>
+                </div>
+              </div>
+    
+              <div class="vertical">
+                <img class="image-top" src="ted.png" alt="" />
+                <div class="title">
+                  Web Developer
+                  <div> in TEDxIITGuwahati</div>
+                </div>
+                <div class="desc">
+                  <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+                  perspiciatis aspernatur optio rem nobis consectetur commodi
+                  tempore doloribus veritatis quisquam.</h4>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+</div>
+
+<!-- portfolio -->
+
+<div id="portfolio">
+    <div class="container">
+        <h1 class="subtitle">Projects</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="work.png" alt="">
+                <div class="layer">
+                    <h3>AI-ML</h3>
+                    <p>The ML model allows you to predict your chances of being covid positive based on the data you will enter.</p>
+                    <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="work2.png" alt="">
+                <div class="layer">
+                    <h3>Web development</h3>
+                    <p>The site enabled smooth functioning and displays all thhe characteristics of html, css and js.</p>
+                    <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="work3.jpeg" alt="">
+                <div class="layer">
+                    <h3>DApps</h3>
+                    <p>DApp creation using WEB3.0.</p>
+                    <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">See more</a>
+    </div>
+</div>
+
+
+<!-- Contact Us -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-sharp fa-solid fa-paper-plane"></i>contact.ts27@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>0248661255</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" ><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://x.com/?lang=en" ><i class="fa-brands fa-twitter-square"></i></a>
+                    <a href="https://www.instagram.com/" ><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/tannya-singh-525330250/" ><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="resume_tannya.pdf" download class="btn btn2">Download CV</a>
+            </div>
+
+
+            <div class="contact-right">
+                <form action="">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright &copy; Tannya Made with <i class="fa-solid fa-heart"></i> | All rights reserved</p>
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+  var typed = new Typed("#element", {
+    strings: [
+      "<i>Web Developer</i>",
+      "<i>Content Writer</i>",
+      "<i>Problem-Solver</i>",
+      "<i>Video Editor</i>",
+    ],
+    typeSpeed: 50,
+  });
+</script>
+
+    <script>
+        var tablinks = document.getElementsByClassName("links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+function opentab(tabname){
+    for(tablink of tablinks)
+    {
+        tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents)
+    {
+        tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+}
+    </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu()
+        {
+            sidemenu.style.right = "0";
+        }
+        function closemenu()
+        {
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+  </body>
+</html>
