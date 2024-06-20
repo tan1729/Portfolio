@@ -464,8 +464,13 @@ transform: scale(1.1);
         display: flex;
         white-space: nowrap;
         box-sizing: border-box;
-        /* display: none; */
+        transition: background 0.5s, transform 0.5s;
     }
+    .desc:hover{
+        background-color: #ff004f;
+        color: white;
+        transform: translateY(-3px);
+      }
       .desc h4{
         margin: 6px 0;
         position: relative;
